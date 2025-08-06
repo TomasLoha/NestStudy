@@ -8,10 +8,12 @@ import {
 	Post,
 	Put,
 	Query,
+	UsePipes,
+	ValidationPipe,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
-import type { CreateTaskDTO } from './dto/create-task-dto';
-import type { UpdateTaskDTO } from './dto/update-task-dto';
+import { CreateTaskDTO } from './dto/create-task-dto';
+import { UpdateTaskDTO } from './dto/update-task-dto';
 
 @Controller('/tasks')
 export class TasksController {
@@ -32,9 +34,11 @@ export class TasksController {
 		return this.tasksService.getTask(parseInt(id));
 	}
 	//puedo obtener el cuerpo del jso na traves de body
-	@Post()
+	@Post() //  recordar no usar "TYPE" al importar una clase, ya que no reconoce el DTO primero sn Objs
+	@UsePipes(new ValidationPipe()) //Va a validar los @Strings,
 	createTasks(@Body() task: CreateTaskDTO) {
 		//puedo ejecutar logica antes
+		console.log(task instanceof CreateTaskDTO); // <== ¿true o false?
 		return this.tasksService.crearTask(task);
 	}
 	@Put() //actualiza una tarea completamente:

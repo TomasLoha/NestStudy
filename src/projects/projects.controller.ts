@@ -1,4 +1,22 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Delete, Get, Patch, Post, Put } from '@nestjs/common';
 
 @Controller('projects')
-export class ProjectsController {}
+export class ProjectsController {
+	@Get()
+	getAllProjects() {}
+
+	@Get()
+	getProject() {}
+
+	@Put()
+	actualizarProject() {}
+
+	@Post()
+	crearProject() {}
+
+	@Delete()
+	eliminarProject() {}
+
+	@Patch()
+	atualizarEspecificaproject() {}
+}

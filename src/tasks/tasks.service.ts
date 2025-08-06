@@ -1,4 +1,4 @@
-import { Injectable, HttpException, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException } from '@nestjs/common';
 import { CreateTaskDTO } from './dto/create-task-dto';
 import { UpdateTaskDTO } from './dto/update-task-dto';
 
