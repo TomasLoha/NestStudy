@@ -27,12 +27,10 @@ export class UsersController {
 		return this.usersService.getUser(parseInt(id));
 	}
 	@Post()
-	@UsePipes(new ValidationPipe())
 	createUsers(@Body() user: createUserDto) {
 		return this.usersService.createUser(user);
 	}
 	@Put()
-	@UsePipes(new ValidationPipe())
 	updateUsers(@Body() user: updateUserDto) {
 		return this.usersService.actualizarUser(user);
 	}
@@ -41,7 +39,6 @@ export class UsersController {
 		return this.usersService.createUser(user);
 	}
 	@Patch()
-	@UsePipes(new ValidationPipe())
 	updateUsersPart(@Body() user: updateUserDto) {
 		return this.usersService.actualizacionEspecificaUser(user);
 	}
