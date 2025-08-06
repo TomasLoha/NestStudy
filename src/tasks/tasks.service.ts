@@ -1,4 +1,6 @@
 import { Injectable, HttpException, NotFoundException } from '@nestjs/common';
+import { CreateTaskDTO } from './dto/create-task-dto';
+import { UpdateTaskDTO } from './dto/update-task-dto';
 
 export interface User {
 	name: string;
@@ -21,7 +23,7 @@ export class TasksService {
 		return taskFound;
 	}
 	//puedo editar/agregar parametros de llegada con esta config ...task
-	crearTask(task: any) {
+	crearTask(task: CreateTaskDTO) {
 		console.log(task);
 		this.tasks.push({
 			...task,
@@ -30,8 +32,9 @@ export class TasksService {
 		return task;
 	}
 
-	actualizarTask() {
-		return 'Actualizar Task';
+	actualizarTask(task: UpdateTaskDTO) {
+		console.log(task.description);
+		return;
 	}
 	eliminarTask() {
 		return 'Eliminar Task';

@@ -10,6 +10,8 @@ import {
 	Query,
 } from '@nestjs/common';
 import { TasksService } from './tasks.service';
+import type { CreateTaskDTO } from './dto/create-task-dto';
+import type { UpdateTaskDTO } from './dto/update-task-dto';
 
 @Controller('/tasks')
 export class TasksController {
@@ -31,15 +33,15 @@ export class TasksController {
 	}
 	//puedo obtener el cuerpo del jso na traves de body
 	@Post()
-	createTasks(@Body() task: any) {
+	createTasks(@Body() task: CreateTaskDTO) {
 		//puedo ejecutar logica antes
 		return this.tasksService.crearTask(task);
 	}
 	@Put() //actualiza una tarea completamente:
 	//  {title: primer tarea, status: false} => {title: primera tarea act, status: true}
-	updateTasks() {
+	updateTasks(@Body() task: UpdateTaskDTO) {
 		//puedo ejecutar logica antes
-		return this.tasksService.actualizarTask();
+		return this.tasksService.actualizarTask(task);
 	}
 	@Delete()
 	deleteTasks() {
