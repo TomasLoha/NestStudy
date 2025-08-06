@@ -18,12 +18,11 @@ export class UsersService {
 	}
 
 	createUser(user: createUserDto) {
-		this.users.push(user);
-
-		return {
+		this.users.push({
 			...user,
 			id: this.users.length + 1,
-		};
+		});
+		return user;
 	}
 
 	actualizarUser(user: updateUserDto) {
